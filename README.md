@@ -1,4 +1,4 @@
-landmark-rails
+landmark
 ==============
 
-Rails 3 plugin for Landmark integration.
+Ruby client and Rails integration for the Landmark analytics service.

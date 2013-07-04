@@ -1,0 +1,16 @@
+===============================================================================
+
+Landmark installation:
+
+  1. Add your API key to the config/landmark.yml file.
+
+  2. Setup Landmark tracking on your controller:
+     For example:
+
+       class ApplicationController < ActionController::Base
+         landmark()
+       end
+
+   3. You're good to go!
+
+===============================================================================
