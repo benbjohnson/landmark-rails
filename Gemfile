@@ -10,3 +10,4 @@ gem "capybara", "~> 2.1.0"
 gem "launchy"
 
 gem 'debugger'
+gem 'simplecov', :require => false
