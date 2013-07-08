@@ -17,7 +17,10 @@ module Landmark
         if respond_to?(:current_user) && !current_user.nil?
           Landmark::Rails.identify(current_user.id)
         end
-        Landmark::Rails.track(request.path)
+        
+        action = request.path
+        action = Landmark::Rails.normalize_path(action) if Landmark::Rails.normalize_paths?
+        Landmark::Rails.track(action)
       end
     end
   end

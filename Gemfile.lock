@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    landmark (0.1.0)
+    landmark-rails (0.1.0)
 
 GEM
   remote: http://rubygems.org/
@@ -120,7 +120,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   debugger
   jquery-rails
-  landmark!
+  landmark-rails!
   launchy
   rails (~> 3.2.13)
   simplecov

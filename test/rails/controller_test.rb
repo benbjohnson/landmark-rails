@@ -12,6 +12,7 @@ class ControllerTest < ActionDispatch::IntegrationTest
   test 'each request should clear Landmark tracking' do
     expected = <<-BLOCK.unindent.chomp
       <script>
+      landmark.push("initialize", "TEST_KEY");
       landmark.push("track", "/", {});
       </script>
     BLOCK
@@ -25,6 +26,7 @@ class ControllerTest < ActionDispatch::IntegrationTest
   test 'authenticated users should automatically be identified' do
     expected = <<-BLOCK.unindent.chomp
       <script>
+      landmark.push("initialize", "TEST_KEY");
       landmark.push("identify", "123", {});
       landmark.push("track", "/authenticated", {});
       </script>
