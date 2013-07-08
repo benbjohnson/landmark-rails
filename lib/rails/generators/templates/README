@@ -13,7 +13,7 @@ Landmark installation:
 
   3. Add the JavaScript tag to your code layout:
   
-      <%= Landmark::Rails.javascript_tag.html_safe %>
+      <%= Landmark::Rails.javascript_tag %>
 
 ===============================================================================
 
