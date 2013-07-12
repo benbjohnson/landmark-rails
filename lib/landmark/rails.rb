@@ -31,7 +31,7 @@ module Landmark
     # The configuration setting for if paths that are automatically tracked are normalized.
     def self.normalize_paths?
       if @normalize_paths.nil?
-        @normalize_paths = config['normalize_paths']
+        @normalize_paths = config['normalize_paths'] unless config.nil?
         @normalize_paths = true if @normalize_paths.nil?
       end
       return @normalize_paths
