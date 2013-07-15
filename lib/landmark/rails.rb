@@ -20,7 +20,8 @@ module Landmark
 
     # The parsed configuration file found at config/landmark.yml
     def self.config
-      @config ||= YAML.load_file("#{::Rails.root}/config/landmark.yml")[::Rails.env] rescue {}
+      @config ||= YAML.load_file("#{::Rails.root}/config/landmark.yml")[::Rails.env] rescue nil
+      @config ||= {}
     end
     
     # Retrieves the API key set for the environment.
