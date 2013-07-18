@@ -3,24 +3,30 @@ module Landmark
     module Helpers
       extend ActiveSupport::Concern
 
-      included do
-        helper_method :landmark
+      # Convenience function to be used as a before_filter. By setting
+      # it, the current user will automatically be identified. To specify
+      # traits and actions properties, use this function within a
+      # before_filter block.
+      def landmark_identify_and_track_page(traits={}, properties={})
+        landmark_identify(traits)
+        landmark_track_page(properties)
       end
-
-      module ClassMethods
-        def landmark
-          before_filter :landmark_identify_and_track
-        end
-      end
-
-      def landmark_identify_and_track
+      
+      # Automatically identifies a user and tracks their traits.
+      def landmark_identify(traits={})
         if respond_to?(:current_user) && !current_user.nil?
-          Landmark::Rails.identify(current_user.id)
+          Landmark::Rails.identify(current_user.id, traits)
         end
-        
-        action = request.path
-        action = Landmark::Rails.normalize_path(action) if Landmark::Rails.normalize_paths?
-        Landmark::Rails.track(action)
+      end
+      
+      # Convenience function for tracking an action within a controller.
+      def landmark_track(action, properties={})
+        Landmark::Rails.track(action, properties)
+      end
+
+      # Convenience function for tracking a page within a controller.
+      def landmark_track_page(properties={})
+        Landmark::Rails.track_page(properties)
       end
     end
   end
