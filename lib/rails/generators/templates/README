@@ -8,7 +8,7 @@ Landmark installation:
 
       class ApplicationController < ActionController::Base
         include Landmark::Rails::Helpers
-        landmark()
+        before_filter :landmark_identify_and_track_page
       end
 
   3. Add the JavaScript tag to your code layout:

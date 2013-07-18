@@ -13,7 +13,8 @@ class ControllerTest < ActionDispatch::IntegrationTest
     expected = <<-BLOCK.unindent.chomp
       <script>
       landmark.push("initialize", "TEST_KEY");
-      landmark.push("track", "/", {});
+      landmark.push("trackPage", {});
+      landmark.push("track", "Home!", {"foo":1000});
       </script>
     BLOCK
 
@@ -28,7 +29,7 @@ class ControllerTest < ActionDispatch::IntegrationTest
       <script>
       landmark.push("initialize", "TEST_KEY");
       landmark.push("identify", "123", {});
-      landmark.push("track", "/authenticated", {});
+      landmark.push("trackPage", {});
       </script>
     BLOCK
 
