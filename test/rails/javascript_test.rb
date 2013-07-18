@@ -17,8 +17,8 @@ class LandmarkTest < ActiveSupport::TestCase
     assert_equal("landmark.push(\"initialize\", \"TEST_KEY\");\n", Landmark::Rails.javascript_initialize_script)
   end
 
-  test "Identification should not be in JavaScript output if Identify() was not called" do
-    assert_equal("", Landmark::Rails.javascript_identify_script)
+  test "Identification should not be in JavaScript output no invocations were made" do
+    assert_equal("", Landmark::Rails.javascript_invocation_script)
   end
 
   test "Identify should add identification to the JavaScript output" do
@@ -26,21 +26,19 @@ class LandmarkTest < ActiveSupport::TestCase
     expected = <<-BLOCK.unindent
       landmark.push("identify", \"123\", {});
     BLOCK
-    assert_equal(expected, Landmark::Rails.javascript_identify_script)
-  end
-
-  test "Tracking should not be in JavaScript output if Track() was not called" do
-    assert_equal("", Landmark::Rails.javascript_track_script)
+    assert_equal(expected, Landmark::Rails.javascript_invocation_script)
   end
 
   test "Track should add tracking to the JavaScript output" do
     Landmark::Rails.track("/index.html", {:foo => 1, :bar => "baz"})
     Landmark::Rails.track("Sign Up")
+    Landmark::Rails.track_page({:foo => 2})
     expected = <<-BLOCK.unindent
       landmark.push("track", "/index.html", {"foo":1,"bar":"baz"});
       landmark.push("track", "Sign Up", {});
+      landmark.push("trackPage", {"foo":2});
     BLOCK
-    assert_equal(expected, Landmark::Rails.javascript_track_script)
+    assert_equal(expected, Landmark::Rails.javascript_invocation_script)
   end
 
   test "javascript output should contain everything" do
