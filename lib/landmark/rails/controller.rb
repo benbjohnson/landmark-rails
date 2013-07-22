@@ -3,6 +3,11 @@ module Landmark
     module Helpers
       extend ActiveSupport::Concern
 
+      # Disables tracking for this request.
+      def disable_landmark()
+        Landmark::Rails.enabled = false
+      end
+      
       # Automatically identifies a user and tracks their traits.
       def landmark_identify(traits={})
         if respond_to?(:current_user) && !current_user.nil?

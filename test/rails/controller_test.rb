@@ -34,4 +34,11 @@ class ControllerTest < ActionDispatch::IntegrationTest
     get "/authenticated"
     assert_string(expected, script)
   end
+
+  test 'disable_tracking' do
+    expected = "<script>window.landmark = window.landmark || [];</script>"
+
+    get root_path(:notrack => "true")
+    assert_string(expected, script)
+  end
 end
