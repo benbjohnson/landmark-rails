@@ -1,6 +1,6 @@
 module Landmark
   module Rails
-    module Helpers
+    module Helper
       extend ActiveSupport::Concern
 
       # Disables tracking for this request.

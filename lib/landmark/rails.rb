@@ -110,6 +110,6 @@ module Landmark
   end
 end
 
-require 'landmark/rails/controller'
+require 'landmark/rails/helper'
 require 'landmark/rails/notifications'
 require 'landmark/rails/version'
