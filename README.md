@@ -1,4 +1,4 @@
-landmark
-==============
+Landmark Rails Integration
+==========================
 
-Ruby client and Rails integration for the Landmark analytics service.
+The landmark-rails project enables you to quickly get up and running with Landmark in your application.
